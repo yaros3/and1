@@ -30,11 +30,20 @@
     function onError() {
         alert('onError!');
     }
+	
+	
+	function getMyData(){
+		 navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+	}
+	
+	
 
     </script>
   </head>
   <body>
     <h1>Example</h1>
     <p>getCurrentAcceleration</p>
+	<button onclick="getMyData();">Pobierz dane</button>
+
   </body>
 </html>
