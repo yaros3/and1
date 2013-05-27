@@ -32,18 +32,31 @@
     }
 	
 	
-	function getMyData(){
-		 navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-	}
 	
+	 function startWatch() {
+
+        // Update acceleration every 3 seconds
+        var options = { frequency: 1000 };
+
+        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+    }
 	
+	function stopWatch() {
+        if (watchID) {
+            navigator.accelerometer.clearWatch(watchID);
+            watchID = null;
+        }
+    }
+
+
 
     </script>
   </head>
   <body>
     <h1>Example</h1>
     <p>getCurrentAcceleration</p>
-	<button onclick="getMyData();">Pobierz dane</button>
+	<button onclick="startWatch();">Start watching</button>
+	<button onclick="stopWatch();">Stop watching</button>
 
   </body>
 </html>
