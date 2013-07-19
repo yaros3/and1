@@ -79,6 +79,15 @@
 		 var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
         db.transaction(queryDB, errorCB);
 	}
+	
+	function addQuery(tx)
+	{
+		 tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+	}
+
+	function addData(tx){
+		db.transaction(addQuery, errorCB);
+	}
 
     </script>
   </head>
@@ -86,9 +95,10 @@
     <h1>Example</h1>
     <p>Database</p>
 	
-	<button type="button" onclick="showData(); return false;" id="create_db">Utwórz bazę</button>
+	<button type="button" onclick="createDB(); return false;" id="create_db">Utwórz bazę</button>
 	
-	<button type="button" onclick="createDB(); return false;" id="create_db">Pokaż dane</button>
+	<button type="button" onclick="showData(); return false;" id="create_db">Pokaż dane</button>
+	<button type="button" onclick="addData(); return false;" id="create_db">dodaj dane</button>
 	
   </body>
 </html>
